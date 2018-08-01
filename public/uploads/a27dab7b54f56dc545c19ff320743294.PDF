@@ -1,0 +1,377 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Transaction Failed</title>
+<link HREF="default/css/default_new.css" TYPE="text/css" REL="STYLESHEET">
+<link HREF="default/css/RS_eng_new.css" TYPE="text/css" REL="STYLESHEET">
+<script src="/jsdir/RS_01_eng.js" language="JavaScript"></script>
+<link HREF="default/css/global.css" TYPE="text/css" REL="STYLESHEET">
+<script src="/jsdir/hashtable.js" language="JavaScript"></script><script src="/jsdir/rsa.js" language="JavaScript"></script><script language="JavaScript">
+var ie4 = (document.all)?true:false;
+var l_clicked = false; 
+//-----------------------------------------------------------------------------
+//start, added on 30-09-2015
+function del_cookie(c_name) {
+    document.cookie = c_name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+}
+//end, added on 30-09-2015
+//------------------------------------------------------------------------------
+// ENH-APS : 14-06-2012 : Pritesh Lad : START
+function redirectAPS(){
+	if (!l_clicked) {
+		document.frmMain.fldTxnId.value='APS';
+		document.frmMain.fldScrnSeqNbr.value='01';
+		document.frmMain.submit();
+		l_clicked = true;
+	}
+	return false;
+}
+// ENH-APS : 14-06-2012 : Pritesh Lad : END
+function home_request ()
+{
+	if(document.frmMain.fldTxnId.value=='XRH' || document.frmMain.fldTxnId.value=='DLD'){
+		document.frmMain.fldTxnId.value='MAS';
+	}else if (document.frmMain.fldTxnId.value=='HDS'){
+		document.frmMain.fldTxnId.value='HAS';
+	}else if (document.frmMain.fldTxnId.value=='MTN'){
+		document.frmMain.fldTxnId.value='BLP';
+        /*--------SocialBanking-CCR-462-UpwanGupta-27/05/2016-START-----*/
+	}else if (document.frmMain.fldTxnId.value=='SOB'){
+		
+		if(window.opener){
+		var form = window.opener.document.frmTxn;
+		form.fldScrnSeqNbr.value = '01';						
+		form.submit();
+		window.close();
+		return false;
+		}
+	/*--------SocialBanking-CCR-462-UpwanGupta-27/05/2016-END-----*/
+	}else if(document.frmMain.fldTxnId.value=='TPD' || document.frmMain.fldTxnId.value=='TPM'){
+		document.frmMain.fldTxnId.value='TPI';
+	}else if(document.frmMain.fldTxnId.value=='TBI' ){
+		document.frmMain.fldTxnId.value='LOA';
+		document.frmMain.fldModule.value='TD';
+	}else if (document.frmMain.fldTxnId.value=='CSL'){
+		document.frmMain.fldTxnId.value='ASM';
+		
+	}else if (document.frmMain.fldTxnId.value=='TFT'){
+		document.frmMain.fldTxnId.value='TPT';
+	}else if (document.frmMain.fldTxnId.value=='TFA'){
+		document.frmMain.fldTxnId.value='TPT';
+	}else if (document.frmMain.fldTxnId.value=='TFM'){
+		document.frmMain.fldTxnId.value='TPT';
+	}else if (document.frmMain.fldTxnId.value=='TFD'){
+		document.frmMain.fldTxnId.value='TPT';
+	
+	}else if (document.frmMain.fldTxnId.value=='TPN'){
+		document.frmMain.fldTxnId.value='TPT';
+	}else if (document.frmMain.fldTxnId.value=='TPR'){
+		document.frmMain.fldTxnId.value='TPT';
+	}
+	else if (document.frmMain.fldTxnId.value=='RNR'){
+		document.frmMain.fldTxnId.value='TPT';
+	}
+	else if (document.frmMain.fldTxnId.value=='RFC'){
+		document.frmMain.fldTxnId.value='TPT';
+	}
+	else if (document.frmMain.fldTxnId.value=='IRD' ){
+		//document.frmMain.fldTxnId.value='IRD';
+		
+
+	
+		
+	
+		window.open('https://netbanking.hdfcbank.com/netbanking/IpinResetMenu.htm','_self');
+
+	
+		
+       	return false;
+	}else if (document.frmMain.fldTxnId.value=='FSS'){
+		document.frmMain.fldModule.value='TD';
+	}
+	else if (document.frmMain.fldTxnId.value=='SUS'){
+		document.frmMain.fldModule.value='TD';
+	}
+	
+	else if (document.frmMain.fldTxnId.value=='RSS'){
+		document.frmMain.fldModule.value='TD';
+	}
+	
+	else if (document.frmMain.fldTxnId.value=='FDL'){
+		document.frmMain.fldModule.value='TD';
+	}
+	//
+	else if (document.frmMain.fldTxnId.value=='RTD' ){
+		//document.frmMain.fldTxnId.value='RTD';
+		window.open('https://netbanking.hdfcbank.com/netbanking/registrationUsingOTP.htm','_self');//
+       	return false;
+	}
+	//
+	
+	else if ('STH'=='RTO' ){
+		window.location.href ="registrationUsingOTP.htm";		
+       	return false;
+
+	}
+	else if ('STH'=='IRO' ){		
+		
+		
+                
+		
+                window.location.href ="IpinResetUsingOTP.htm";	
+                
+			
+       	return false;
+	}
+	/* FD-MATURITY-INSTRUCTION-CHANGE-28/05/2012-Naeem M. Sayyed-START */
+	else if ('STH'=='CCA' ){		
+		document.frmMain.fldTxnId.value='CFI';       	
+	}
+	/* FD-MATURITY-INSTRUCTION-CHANGE-28/05/2012-Naeem M. Sayyed-END */
+/* Standing Instruction Change-14/05/2012-Sandeep Saxena-START */
+	else if ('STH'=='VSI' ){
+			if('03'=='03' ){		
+				document.frmMain.fldTxnId.value='TSI';       	
+			}else {		
+				document.frmMain.fldTxnId.value='OFT';       	
+			}
+		}
+/* Standing Instruction Change-14/05/2012-Sandeep Saxena-END */
+	
+/* Tax Efiling-Anant-START */
+       else if ('STH'=='ITF' ){		
+		document.frmMain.fldTxnId.value='ASM';       
+		top.frames["left_menu"].diablefieldcolor('ITF');
+		top.frames["left_menu"].requestatag.className = "accounts opener";
+		top.frames["left_menu"].requestdiv.style.display	= "none";
+		top.frames["left_menu"].enquiryatag.className = "accounts opener btmBluArw";
+		top.frames["left_menu"].enquirydiv.style.display = "block";
+	}
+/* Tax Efiling-Anant-END */
+	document.frmMain.fldScrnSeqNbr.value='01';
+	
+	/* Tejas D - Added for Flexi RD back to transaction START*/
+	 if ('STH'=='FRD' && '03'=='09'){
+		document.frmMain.fldScrnSeqNbr.value='08';
+	 }
+	/* Tejas D - Added for Flexi RD back to transaction END*/
+	
+	
+	
+	if(!l_clicked){
+		l_clicked = true;
+		document.frmMain.submit();
+	}
+	return false;
+
+}
+//------------------------------------------------------------------------------
+
+function openNewRegister(){
+	document.frmMain.fldTxnId.value = 'LNR';
+	document.frmMain.fldScrnSeqNbr.value = '01';
+	if(!l_clicked){
+		l_clicked = true;
+		document.frmMain.submit();
+	}
+	top.frames["left_menu"].sub_menu_click=false;	
+	top.frames["left_menu"].menu_click('LNR','RS');	
+	return false;
+}
+
+//------------------------------------------------------------------------------
+
+function ipin_regen_request(){
+	if (document.frmMain.fldTxnId.value=='RTO' ){
+		window.location.href ="IpinResetUsingOTP.htm";
+       	return false;
+
+	} else if (document.frmMain.fldTxnId.value=='RTD' ){
+		//window.location.href ="IpinThrDC.htm"; //
+		window.location.href ="IpinResetUsingOTP.htm"; 
+		
+       	return false;
+
+	}
+}
+
+//------------------------------------------------------------------------------
+function init() {
+	/*if (document.frmMain.fldTxnId.value != "BLP" && document.frmMain.fldTxnId.value != "MTN"  && document.frmMain.fldTxnId.value != "OLR" && document.frmMain.fldTxnId.value != "CAD") {
+	}*/
+	return false;
+}
+//------------------------------------------------------------------------------
+function gotoRegister()
+{
+	document.frmMain.fldTxnId.value = 'CAC';
+	document.frmMain.fldScrnSeqNbr.value = '01';
+	if(!l_clicked){
+		l_clicked = true;
+		document.frmMain.submit();
+	}
+	return false;
+}
+//------------------------------------------------------------------------------
+function gotoCCPayment()
+{
+	document.frmMain.fldTxnId.value = 'CCP';
+	document.frmMain.fldScrnSeqNbr.value = '01';
+	if(!l_clicked){
+		l_clicked = true;
+		document.frmMain.submit();
+	}
+	return false;
+}
+//------------------------------------------------------------------------------
+function continue_click () {
+	del_cookie('hdfcnetbank');	 //added on 30-09-2015
+	document.frmRsa.target				= "_top"
+	document.frmRsa.fldTxnId.value		= "MNU";
+	document.frmRsa.fldScrnSeqNbr.value = "09";
+	if(!l_clicked){
+		document.frmRsa.submit();
+		l_clicked = true;
+	}
+	return false;
+}
+//-------------------------------------------------------------------------------
+function now_click () {
+	document.frmRsa.fldTxnId.value				= "RSR";
+	document.frmRsa.fldScrnSeqNbr.value			= "02";
+	document.frmRsa.fldPartialRegistraion.value = "T";
+	document.frmRsa.fldActionType.value			= "GET_AA_STATUS";
+	if(!l_clicked){
+		setInputParams();
+		document.frmRsa.submit();
+		l_clicked = true;
+	}
+	return false;
+}
+//-----------------------------------------------------------------------------
+function partial_click () {
+	
+	var rsaUserStatus = "";
+	var rsaPartialFlag = "Y";
+
+	if(rsaUserStatus == '') {
+		rsaUserStatus = "";
+	}
+
+	
+
+	if (rsaUserStatus == "S"){
+		document.frmRsa.fldScrnSeqNbr.value = "03";
+		document.frmRsa.fldActionType.value ="BROWSE_QUESTION";
+	} else if (rsaUserStatus == "Q"){
+		document.frmRsa.fldActionType.value = "";
+		document.frmRsa.fldScrnSeqNbr.value = "04";
+	} else {
+		document.frmRsa.fldActionType.value = "";
+		document.frmRsa.fldScrnSeqNbr.value = "02";
+		document.frmRsa.fldActionType.value = "GET_AA_STATUS";
+	}
+	document.frmRsa.fldRsaUserStatus.value = rsaUserStatus;
+	document.frmRsa.fldPartialRegistraion.value = rsaPartialFlag;
+	document.frmRsa.fldTxnId.value = "RSR";
+	if(!l_clicked){
+		document.frmRsa.submit();
+		l_clicked = true;
+	}
+	return false;
+}
+//-------------------------------------------------------------------------------
+function recollect_click () {
+	var reCollect = "Y";
+
+	
+
+	document.frmRsa.fldScrnSeqNbr.value		  = "01";
+	document.frmRsa.fldActionType.value		  = "BROWSE_QUESTION";
+	document.frmRsa.fldTxnId.value			  = "RRC";
+	document.frmRsa.fldDataRecollection.value = reCollect;
+
+	if(!l_clicked){
+		document.frmRsa.submit();
+		l_clicked = true;
+	}
+	return false;
+}
+//-------------------------------------------------------------------------------
+function setInputParams(){
+	var l_dp_value = '';
+	//var l_fs_value = '';
+
+	try{
+		l_dp_value = encode_deviceprint(); // Anant Mane : RSA finger Printing
+	} catch (e) {
+		l_dp_value = '';
+	}
+	document.frmRsa.fldDevicePrint.value	= l_dp_value;
+
+	/*
+	try{
+		l_fs_value = parent.l_flashToken;
+	} catch (e) {
+		l_fs_value = '';
+	}
+	document.frmRsa.fldDeviceTokenFSO.value = l_fs_value;
+	*/
+}
+//-------------------------------------------------------------------------------
+	 
+function updateFatcaDetails() {
+	    if (!l_clicked) {
+		l_clicked = true;
+	        parent.frames["common_menu1"].selectTab(ACCOUNT_MNEMONIC); //refresh top tab to Accounts
+	        parent.frames["common_menu1"].parent.txnReq = ACCOUNT_MNEMONIC;
+	        parent.frames["common_menu1"].document.frmpost.fldTxnId.value = 'MNU';
+	        parent.frames["common_menu1"].document.frmpost.fldScrnSeqNbr.value = '41';
+	        parent.frames["common_menu1"].document.frmpost.target = "left_menu";
+		parent.frames["common_menu1"].leftMenuRefreshTXN = 'UFD'; //Open this txn by default on left frame reload
+	        parent.frames["common_menu1"].document.frmpost.submit();  //Refresh left frame
+	        l_fireAppClicked = true;
+	    }
+	    return false;
+	}
+		      
+
+function formSubmit(p_type,p_loanType){
+
+	if(!l_clicked){
+		l_clicked = true;
+		if(p_type == "RAL") {
+		
+			document.frmMain.fldTxnId.value="RAL";
+			document.frmMain.fldLoanApplied.value=p_loanType;
+			document.frmMain.fldScrnSeqNbr.value = "04";
+			}	
+		document.frmMain.submit();
+		}
+	return false;
+}
+
+//-------------------------------------------------------------------------------------------------
+</script>
+</head>
+<body onload="return init();">
+<form action="entry" name="frmMain" class="width" method="post">
+<input value="RS" name="fldAppId" type="hidden"><input value="STH" name="fldTxnId" type="hidden"><input value="eng" name="fldLangId" type="hidden"><input value="01" name="fldDeviceId" type="hidden"><input value="03" name="fldScrnSeqNbr" type="hidden"><input value="1348246496OARSBTLX" name="fldSessionId" type="hidden"><input value="" name="fldWebServerId" type="hidden"><input value="ZZ" name="fldAppServerId" type="hidden"><input value="" name="fldAcctNo" type="hidden"><input value="CH" name="fldModule" type="hidden"><input value="" name="fldAppServerId" type="hidden"><input value="" name="fldRoleId" type="hidden">
+<br>
+<table id="n" class="formtable" border="0" width="80%">
+<tr>
+<td id="tab_id" class="DataLeftAlignedBold">A transaction with similar parameters was received few moments back. Please check your account before reinitiating the transaction again.<br>
+</td>
+</tr>
+<tr></tr>
+</table>
+<br>
+<p style="display:block" id="ret_ele" class="DataLeftAligned">
+<a onclick="return home_request()" href="javascript:void(0)">Return To Transaction</a>
+<br>
+</p>
+</form>
+<script src="jsdir/jquery-1.8.2.min.js" language="JavaScript"></script><script src="jsdir/custom-form-elements_new.js" language="JavaScript"></script>
+</body>
+</html>
